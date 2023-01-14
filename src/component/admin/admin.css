@@ -1,0 +1,19 @@
+.pag {
+  height: 60px;
+}
+.pagination a{
+  text-decoration: none;
+  color: black;
+  margin-top: 15px
+}
+.break{
+  margin-top: 15px;
+}
+.paginationBtn a:hover {
+  background-color: #eaeaea;
+}
+
+.paginationActive a {
+  background-color: #eaeaea;
+}
+

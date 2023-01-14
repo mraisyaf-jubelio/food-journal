@@ -113,4 +113,15 @@ export const userLikeFood = async () => {
             }
         })
     return foods.data.data
-} 
+}
+
+export const getUser = async () => {
+    const people = await axios.get(`${process.env.REACT_APP_BASEURL}/api/v1/user`,
+        {
+            headers: {
+                apiKey: process.env.REACT_APP_APIKEY,
+                "Authorization": `Bearer ${sesi.token}`
+            }
+        })
+    return people.data.user
+}

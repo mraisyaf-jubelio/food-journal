@@ -42,23 +42,23 @@ const Login = () => {
           </Col>
           <Col md={4} sm={5} className="kolom-login p-3 rounded-end">
             <h3 className="fw-bold judul">Login</h3>
-            <p className="text-muted mb-2">Masukan email dan password untuk masuk</p>
+            <p className="text-muted mb-2">Login into your account</p>
             <Form onSubmit={handleSubmit(submit)}>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" {...register("email")} placeholder="Masukan email" />
+                <Form.Control type="email" {...register("email")} placeholder="enter your email" />
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
-                <Form.Control type="password" {...register("password")} placeholder="Masukan Password" />
+                <Form.Control type="password" {...register("password")} placeholder="enter your Password" />
               </Form.Group>
 
               <Button variant="outline-light" className="back-color mb-3 w-100" type="submit">
                 Submit
               </Button>
               <Form.Text className="text-center text-capitalize">
-                Tidak punya akun? <a href="register">Register</a>
+                Don't have account? <a href="register">Sign up</a>
               </Form.Text>
             </Form>
           </Col>

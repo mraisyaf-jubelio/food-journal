@@ -49,11 +49,11 @@ const Register = () => {
       <Container>
         <Row className="p-2 justify-content-center align-items-center">
           <Col md={6} lg={4} sm={10} className="register">
-            <h2 className="fw-bold text-center">Register</h2>
-            <p className="text-center">Silahkan isi data diri anda</p>
+            <h2 className="fw-bold text-center">Sign up</h2>
+            <p className="text-center">Sign up into your account</p>
             <Form onSubmit={handleSubmit(onSubmit)}>
               <FloatingLabel controlId="floatingText" className="mb-3" label="Nama Lengkap">
-                <Form.Control {...register("name")} autoFocus required />
+                <Form.Control {...register("name")} autoFocus required placeholder="enter your name" />
               </FloatingLabel>
               <FloatingLabel controlId="floatingInput" className="mb-3" label="Email address">
                 <Form.Control type="email" {...register("email")} placeholder="name@example.com" />
@@ -61,14 +61,14 @@ const Register = () => {
               <FloatingLabel controlId="floatingPassword" className="mb-3" label="Password">
                 <Form.Control type="password" {...register("password")} placeholder="Password" />
               </FloatingLabel>
-              <FloatingLabel controlId="floatingPassword2" className="" label="Ulangi Password">
-                <Form.Control type="password" {...register("password2")} placeholder="Password" />
+              <FloatingLabel controlId="floatingPassword2" className="" label="Confirm Password">
+                <Form.Control type="password" {...register("password2")} label="confirm password" />
               </FloatingLabel>
               <Form.Group controlId="formFile" className="mb-4">
-                <Form.Label>Poto</Form.Label>
+                <Form.Label>Photo</Form.Label>
                 <Form.Control {...register("poto")} type="file" name="poto" />
               </Form.Group>
-              <FloatingLabel controlId="floatingText" className="mb-3" label="Nomor Telepon">
+              <FloatingLabel controlId="floatingText" className="mb-3" label="Phone Number">
                 <Form.Control type="number" {...register("number")} />
               </FloatingLabel>
               <Button variant="outline-light" type="submit" className="back-color w-100">
@@ -76,7 +76,7 @@ const Register = () => {
               </Button>{" "}
             </Form>
             <div className="mt-2">
-              have'nt a acount? <Link to="/">Login</Link>
+              Allready have account? <Link to="/">Login</Link>
             </div>
           </Col>
         </Row>

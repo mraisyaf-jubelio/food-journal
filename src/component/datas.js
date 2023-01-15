@@ -8,3 +8,14 @@ export const options = [
     { label: "msg", value: "msg" }
 
 ]
+
+export const roleData = [
+    {
+        value: "user",
+        label: "user"
+    },
+    {
+        value: "admin",
+        label: "admin"
+    }
+]

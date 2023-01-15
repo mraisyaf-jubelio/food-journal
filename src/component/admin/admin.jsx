@@ -10,6 +10,10 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { getFood } from "../api";
+import { roleData } from "../datas";
+import ReactSelect from "react-select";
+import { updateRole } from "../api";
+import RatingView from "../rating";
 import "../component.css";
 
 const Admin = () => {
@@ -26,6 +30,16 @@ const Admin = () => {
   }
 
   const displayUsers = users.slice(pageVisit, pageVisit + perPage).map((user, i) => {
+    const defRole = {
+      value: user.role,
+      label: user.role,
+    };
+    const upRole = (el) => {
+      updateRole(el, user.id).then((respon) => {
+        alert(respon.data.message);
+        window.location.reload(false);
+      });
+    };
     return (
       <tr key={i}>
         <td>
@@ -35,11 +49,14 @@ const Admin = () => {
         <td>{user.phoneNumber}</td>
         <td>{user.role}</td>
         <td>
-          <Link to={`users/${user.id}`} className="text-decoration-none">
-            <Button variant="outline-light" className="back-color">
-              Detail
-            </Button>{" "}
-          </Link>
+          <ReactSelect
+            className="basic-single"
+            classNamePrefix="select"
+            defaultValue={defRole}
+            name="color"
+            options={roleData}
+            onChange={(e) => upRole(e.value)}
+          />
         </td>
       </tr>
     );
@@ -81,7 +98,7 @@ const Admin = () => {
   return (
     <>
       <Container className="mb-5">
-        <h1>Data User</h1>
+        <h1 className="fw-bolder color text-center">Data User</h1>
         <Row>
           <Col lg={12}>
             <Table striped borderless responsive="sm" className="text-center">
@@ -119,6 +136,7 @@ const Admin = () => {
           </Col>
         </Row>
         <Row className="gap-5 mt-5 justify-content-center p-3">
+          <h1 className="fw-bolder color text-center">List Food</h1>
           {food.map((e, i) => {
             return (
               <Col key={i} lg={3} md={6} className="d-flex justify-content-center">
@@ -133,14 +151,11 @@ const Admin = () => {
                     <Card.Text>{e.description}</Card.Text>
                     <div className="d-flex justify-content-center mt-2 mb-2">
                       <div className="like" onClick={() => liked(e.id, e.isLike)}>
-                        <FontAwesomeIcon icon={faHeart} className={e.isLike === true ? "text-danger" : "text-white"} />
+                        <FontAwesomeIcon icon={faHeart} className={e.isLike === true ? "text-danger" : "text-light"} />
                         <span className="ms-2 ">{e.totalLikes}</span>
                       </div>
                       <div className="rate p-1">
-                        <FontAwesomeIcon icon={faStar} className="text-warning" />
-                        <FontAwesomeIcon icon={faStar} className="text-warning" />
-                        <FontAwesomeIcon icon={faStar} />
-                        <FontAwesomeIcon icon={faStar} />
+                        <RatingView rate={e.rating} size={23} />
                       </div>
                     </div>
                     <Link to={`detailFoodAdmin/${e.id}`}>

@@ -125,3 +125,19 @@ export const getUser = async () => {
         })
     return people.data.user
 }
+export const updateRole = async (role, id) => {
+    const apis = await axios.post(
+        `${process.env.REACT_APP_BASEURL}/api/v1/update-user-role/${id}`,
+        {
+            role: role,
+
+        },
+        {
+            headers: {
+                apiKey: process.env.REACT_APP_APIKEY,
+                Authorization: `Bearer ${sesi.token}`,
+            },
+        }
+    );
+    return apis
+};

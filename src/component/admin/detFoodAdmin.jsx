@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../component.css";
 import { Container, Row, Col, Button, Modal, Form } from "react-bootstrap";
 import { getRating, hapus } from "../api";
-import { options } from "./ingredients";
+import { options } from "../datas";
 import { useForm, Controller } from "react-hook-form";
 import Select from "react-select";
 import { uploadImage } from "../api";
@@ -10,7 +10,7 @@ import { detailFood } from "../api";
 import { Link, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
+import RatingView from "../rating";
 import axios from "axios";
 import { sesi } from "../api";
 
@@ -21,55 +21,56 @@ function DetFoodAdmin() {
   let { id } = useParams();
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const inggredients = detFood.ingredients == undefined ? [] : detFood.ingredients
-  const ingreDef = inggredients.map(e => {
+  const inggredients = detFood.ingredients === undefined ? [] : detFood.ingredients;
+  const ingreDef = inggredients.map((e) => {
     return {
       label: e,
-      value: e
-    }
-  })
+      value: e,
+    };
+  });
 
-  const {
-    register,
-    handleSubmit,
-    control,
-  } = useForm();
+  const { register, handleSubmit, control } = useForm();
 
   const onSubmit = async (data) => {
     let respon = data.defImg;
     const bahan = [];
     const ingre = data.bahan;
-    console.log(ingre)
+    console.log(data);
     ingre.map((e) => {
       bahan.push(e.value);
     });
     const imgFood = data.poto[0];
     if (data.poto) {
       try {
-        respon = await uploadImage(imgFood)
+        respon = await uploadImage(imgFood);
       } catch (eror) {
-        alert(eror.response.data.errors)
+        alert(eror.response.data.errors);
       }
     }
-    axios.post(`${process.env.REACT_APP_BASEURL}/api/v1/update-food/${id}`,
-      {
-        name: data.name,
-        description: data.desc,
-        imageUrl: respon,
-        ingredients: bahan,
-      },
-      {
-        headers: {
-          apiKey: process.env.REACT_APP_APIKEY,
-          "Authorization": `Bearer ${sesi.token}`
+    axios
+      .post(
+        `${process.env.REACT_APP_BASEURL}/api/v1/update-food/${id}`,
+        {
+          name: data.name,
+          description: data.desc,
+          imageUrl: respon,
+          ingredients: bahan,
+        },
+        {
+          headers: {
+            apiKey: process.env.REACT_APP_APIKEY,
+            Authorization: `Bearer ${sesi.token}`,
+          },
         }
-      }).then(respon => {
-        alert(respon.data.message)
-        // window.location.reload(false)
-      }).catch(err => {
-        let data = err.response.data.errors
-        data.map((e) => alert(e.message))
+      )
+      .then((respon) => {
+        alert(respon.data.message);
+        window.location.reload(false);
       })
+      .catch((err) => {
+        let data = err.response.data.errors;
+        data.map((e) => alert(e.message));
+      });
   };
 
   const hndleHps = (id) => {
@@ -78,7 +79,6 @@ function DetFoodAdmin() {
         window.location.assign("/admin");
       });
     }
-
   };
 
   useEffect(() => {
@@ -103,29 +103,29 @@ function DetFoodAdmin() {
           <Col md={5} sm={6} xs={6} className="p-4 rounded-end bg-white">
             <div>
               <h2 className="fw-bold fs-1">{detFood.name}</h2>
-              <div className="d-flex align-items-center">
-                <p className="">
-                  Likes <FontAwesomeIcon icon={faHeart} className="text-danger me-1" />
+              <div className="d-flex align-items-center gap-1">
+                <p>
+                  Likes <FontAwesomeIcon icon={faHeart} className="text-danger ms-1 me-1" />
                   {detFood.totalLikes}
                 </p>
-                <p className="ms-1 me-1">|</p>
-                <p>rating</p>
-                <img
-                  src="https://assets.tokopedia.net/assets-tokopedia-lite/v2/zeus/kratos/abeeb1e0.svg"
-                  className="ms-2 mb-4 me-1 img-fluid"
-                  alt=""
-                />
-                <p>5</p>
+                <p>|</p>
+                <p>
+                  <RatingView rate={parseInt(detFood.rating)} size={20} />
+                </p>
+                <p>{detFood.rating}</p>
               </div>
               <h5 className="fw-semibold">Description : </h5>
               <p>{detFood.description}</p>
               <div>
-                <h5>inggridient :</h5>
-                <ul></ul>
+                <h5>ingredients:</h5>
+                <ul>
+                  {inggredients.map((e, i) => {
+                    return <li key={i}>{e}</li>;
+                  })}
+                </ul>
               </div>
 
               <div className="d-flex ">
-
                 <Button variant="outline-light" className="back-color" onClick={() => hndleHps(detFood.id)}>
                   Delete
                 </Button>
@@ -136,29 +136,24 @@ function DetFoodAdmin() {
             </div>
           </Col>
         </Row>
-        <Row className="bg-light p-2 justify-content-center">
-          <h2 className="fw-bolder color text-center">Rating</h2>
+        <Row className="p-2 justify-content-center gap-3">
+          <h2 className="fw-bolder text-white text-center">Rating</h2>
           {ratingFood.map((e, i) => {
             return (
-              <Col lg={4} key={i}>
-                <div>
-                  <img src={e.user.profilePictureUrl} className="img-fluid img-rating rounded-circle me-2" />
+              <Col lg={3} md={6} sm={8} key={i} className="text-white p-3 rounded-4" style={{ background: "#333333" }}>
+                <div className="mb-1">
+                  <img src={e.user.profilePictureUrl} alt={e.user.name} className="img-fluid img-rating rounded-circle me-2" />
                   <span>{e.user.name}</span>
                 </div>
-                <div>
-                  <FontAwesomeIcon icon={faStar} className="text-warning fs-6 me-2" />
-                  <span className="fs-6"></span>
-                </div>
-                <div>
-                  <p>{e.review}</p>
-                </div>
+                <RatingView rate={e.rating} size={16} />
+                <p className="mt-1">{e.review}</p>
                 <hr />
               </Col>
             );
           })}
         </Row>
       </Container>
-      {/* <Edit  makanan={detFood.name} desc={detFood.description}/> */}
+
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Edit Food</Modal.Title>
@@ -180,32 +175,31 @@ function DetFoodAdmin() {
             </Form.Group>
 
             <Form.Group>
+              <Form.Label>Ingredients</Form.Label>
               <Controller
                 name="bahan"
                 control={control}
-                defaultValue={ingreDef}
-                render={({ field, onChange }) => (
+                render={({ field: { value, onChange } }) => (
                   <Select
                     isMulti
                     options={options}
                     defaultValue={ingreDef}
                     className="basic-multi-select"
                     classNamePrefix="select"
-                    value={field.value || ingreDef}
+                    value={value}
                     onChange={(e) => {
-
-
-                      field.onChange(e)
+                      onChange(e);
                     }}
                   />
                 )}
               />
+              <Form.Text className="mt-2">please reselect ingredients too edit food</Form.Text>
             </Form.Group>
-            <div className="d-flex justify-content-around ">
+            <div className="d-flex justify-content-around mt-2">
               <Button variant="outline-light" className="back-color" type="submit">
                 Submit
               </Button>
-              <Button variant="outline-light" className="back-color" type="reset">
+              <Button variant="outline-light" className="back-color" type="reset" onClick={handleClose}>
                 Cancel
               </Button>
             </div>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./component.css";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import { getRating } from "./api";
 import { detailFood } from "./api";
 import { useParams } from "react-router-dom";

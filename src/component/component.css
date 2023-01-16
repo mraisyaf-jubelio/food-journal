@@ -112,6 +112,7 @@ td {
   padding: 1rem;
   border-radius: 13px;
   border: 1px solid #c2c3c5;
+  background-color: rgba(235, 235, 235, 0.25);
 }
 .isi {
   margin-top: 40px;

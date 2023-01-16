@@ -5,7 +5,6 @@ export const options = [
     { value: "beef", label: "beef" },
     { value: "pork", label: "pork" },
     { value: "chese", label: "chese" },
-    { value: "oil", label: "oil" },
     { value: "vegetable oil", label: "vegetable oil" },
     { value: "flour", label: "flour" },
     { value: "paprika", label: "paprika" },

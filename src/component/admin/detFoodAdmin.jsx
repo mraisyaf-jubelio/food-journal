@@ -35,7 +35,7 @@ function DetFoodAdmin() {
     let respon = data.defImg;
     const bahan = [];
     const ingre = data.bahan;
-    console.log(data);
+
     ingre.map((e) => {
       bahan.push(e.value);
     });

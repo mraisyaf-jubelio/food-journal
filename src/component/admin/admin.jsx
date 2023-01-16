@@ -15,6 +15,7 @@ import ReactSelect from "react-select";
 import { updateRole } from "../api";
 import RatingView from "../rating";
 import "../component.css";
+import { sesi } from "../api";
 
 const Admin = () => {
   const [pageNumber, setPageNumber] = useState(0);
@@ -22,12 +23,6 @@ const Admin = () => {
   const [food, setFood] = useState([]);
   const perPage = 10;
   const pageVisit = pageNumber * perPage;
-  const local = localStorage.getItem("myObject");
-  const obj = JSON.parse(local);
-  let sesi = {};
-  for (const i in obj) {
-    sesi = obj[i];
-  }
 
   const displayUsers = users.slice(pageVisit, pageVisit + perPage).map((user, i) => {
     const defRole = {

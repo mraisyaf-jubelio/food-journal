@@ -77,7 +77,7 @@ td {
 .card-food {
   margin-top: 3.2rem;
   border-radius: 31px;
-  width: 255px;
+  width: 300px;
   position: relative;
 }
 .card-food-image {
@@ -112,7 +112,7 @@ td {
   padding: 1rem;
   border-radius: 13px;
   border: 1px solid #c2c3c5;
-  background-color: rgba(235, 235, 235, 0.25);
+  background-color: rgba(235, 235, 235, 2);
 }
 .isi {
   margin-top: 40px;
@@ -120,13 +120,13 @@ td {
 
 .like {
   width: 67px;
-  padding-top: 7px;
+  padding: 6.2px;
+  /* padding-top: 4.5px; */
   border-radius: 20px;
   border: 1px solid rgba(46, 46, 46, 0.25);
   margin-right: 10px;
   background-color: #e9e9e9;
 }
-
 /* end Dashboard */
 
 /* start user */
@@ -212,14 +212,6 @@ td {
   height: 47px;
   line-height: 47px;
 }
-
-/* rating */
-.img-rating {
-  width: 40px;
-  height: 40px;
-}
-
-/* end-rating */
 
 @media screen and (max-width: 825px) {
   .bg {

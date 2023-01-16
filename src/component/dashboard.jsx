@@ -13,16 +13,10 @@ import bg from "./assets/img/bg2.png";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import RatingView from "./rating";
+import { sesi } from "./api";
 
 const Dashboard = () => {
   const [food, setFood] = useState([]);
-  const local = localStorage.getItem("myObject");
-  const obj = JSON.parse(local);
-  let sesi = {};
-  for (const i in obj) {
-    sesi = obj[i];
-  }
-
   const liked = (id, like) => {
     let likeApi;
     if (!like) {
@@ -75,16 +69,16 @@ const Dashboard = () => {
               </div>
             </Col>
           </Row>
-          <Row className="justify-content-center gap-5 bg-page p-3">
-            <h2 className="mt-3 judul text-center fw-bold">Category Foods</h2>
+          <Row className="justify-content-center gap-5 p-3">
+            <h2 className="mt-3 judul text-center fw-bold color">Category Foods</h2>
             <Col md={4} sm={5} xs={10} className="p-lg-3 ">
               <div className="colom">
                 <img src={health} alt="makanan sehat cuy" className="img-fluid images-spec" />
                 <div className="isi">
-                  <h2>Healthy Food</h2>
+                  <h2 className="color">Healthy Food</h2>
                   <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea possimus ullam odio quibusdam, quia incidunt
-                    fugiat eaque deleniti error cupiditate!
+                    Healthy Food is food that has a balanced nutritional content, contains fiber and substances the body needs
+                    for the process of growth and development.
                   </p>
                 </div>
               </div>
@@ -93,10 +87,9 @@ const Dashboard = () => {
               <div className="colom">
                 <img src={veg} alt="vegetarian" className="img-fluid images-spec" />
                 <div className="isi">
-                  <h2>Vegetarian Food</h2>
+                  <h2 className="color">Vegetarian Food</h2>
                   <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea possimus ullam odio quibusdam, quia incidunt
-                    fugiat eaque deleniti error cupiditate!
+                    Vegetarian cuisine is food that meets vegetarian standards by excluding meat and products of animal origin.
                   </p>
                 </div>
               </div>
@@ -105,10 +98,10 @@ const Dashboard = () => {
               <div className="colom">
                 <img src={cpt} alt="" className="img-fluid images-spec" />
                 <div className="isi">
-                  <h2>Fast Food</h2>
+                  <h2 className="color">Fast Food</h2>
                   <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea possimus ullam odio quibusdam, quia incidunt
-                    fugiat eaque deleniti error cupiditate!
+                    Fast food is food served and served quickly. In other words, ready-to-eat food is food that is prepared
+                    immediately
                   </p>
                 </div>
               </div>
@@ -137,7 +130,7 @@ const Dashboard = () => {
                           <span className="ms-2 ">{e.totalLikes}</span>
                         </div>
                         <div className="rate p-1">
-                          <RatingView rate={e.rating} />
+                          <RatingView rate={e.rating} size={23} />
                         </div>
                       </div>
                       <Link to={`detail/${e.id}`}>

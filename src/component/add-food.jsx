@@ -9,6 +9,7 @@ import { uploadImage } from "./api";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBowlFood } from "@fortawesome/free-solid-svg-icons";
+import image from "./assets/img/add-image.png";
 
 const AddFood = () => {
   const schema = yup.object({
@@ -72,9 +73,9 @@ const AddFood = () => {
   return (
     <section className="font">
       <Container>
-        <Row className="justify-content-center pt-4">
+        <Row className="justify-content-center pt-4 align-items-center">
           <h2 className="text-center">Form Add Food</h2>
-          <Col md={5}>
+          <Col md={4} sm={9} className="ord-1">
             <div className="kolom-add p-3 border-1">
               <Form onSubmit={handleSubmit(onSubmit)}>
                 <Form.Group className="mb-3" controlId="formBasicText">
@@ -121,6 +122,9 @@ const AddFood = () => {
                 </div>
               </Form>
             </div>
+          </Col>
+          <Col md={4} sm={6}>
+            <img src={image} className="img-fluid" alt="ilustrasi" />
           </Col>
         </Row>
       </Container>

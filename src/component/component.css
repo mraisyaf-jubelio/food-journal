@@ -77,7 +77,7 @@ td {
 .card-food {
   margin-top: 3.2rem;
   border-radius: 31px;
-  width: 300px;
+  width: 245px;
   position: relative;
 }
 .card-food-image {
@@ -178,7 +178,10 @@ td {
   width: 5.1rem;
 }
 /* end admin */
-
+.img-rating {
+  width: 40px;
+  height: 40px;
+}
 .bg-eror {
   position: absolute;
   top: 200px;
@@ -211,6 +214,11 @@ td {
   width: 150px;
   height: 47px;
   line-height: 47px;
+}
+.close {
+  margin-left: 10rem;
+  font-size: larger;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 825px) {

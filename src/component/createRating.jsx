@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import ReactStars from "react-rating-stars-component";
 import { createRate } from "./api";
+
 function Rate(props) {
   const [review, setReview] = useState();
   const [rating, setRating] = useState();
@@ -20,7 +21,7 @@ function Rate(props) {
         isHalf={true}
         emptyIcon={<i className="far fa-star"></i>}
         halfIcon={<i className="fa fa-star-half-alt"></i>}
-        fullIcon={<i className="fa fa-star"></i>}
+        fullIcon={<i className="fa fa-star "></i>}
         activeColor="#ffd700"
       />
       <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">

@@ -88,7 +88,7 @@ const AddFood = () => {
                   <></>
                 )}
                 <Form.Group className="mb-3" controlId="formBasicText">
-                  <Form.Label>Name Food</Form.Label>
+                  <Form.Label>Food Name</Form.Label>
                   <InputGroup>
                     <div className="icon">
                       <FontAwesomeIcon icon={faBowlFood} />
@@ -101,11 +101,12 @@ const AddFood = () => {
                   <Form.Control as="textarea" {...register("desc")} rows={3} />
                 </Form.Group>
                 <Form.Group controlId="formFile" className="mb-4">
-                  <Form.Label>Poto</Form.Label>
+                  <Form.Label>Food Photo</Form.Label>
                   <Form.Control {...register("poto")} type="file" name="poto" />
                 </Form.Group>
 
                 <Form.Group>
+                  <Form.Label>Ingredients</Form.Label>
                   <Controller
                     name="bahan"
                     control={control}

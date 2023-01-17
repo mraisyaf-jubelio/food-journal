@@ -35,11 +35,13 @@ const Register = () => {
           }
         )
         .then((respon) => {
-          alert(respon.data.data.message);
+          console.log(respon);
           window.location.assign("/");
         })
         .catch((err) => {
-          const showErr = err.response.data.errors;
+          console.log(err.response);
+          alert(err.response.data.message);
+          const showErr = err.response.data;
           showErr.map((e) => alert(e.message));
         });
     });
@@ -72,7 +74,7 @@ const Register = () => {
                 <Form.Control type="number" {...register("number")} />
               </FloatingLabel>
               <Button variant="outline-light" type="submit" className="back-color w-100">
-                Submit
+                Sign up
               </Button>{" "}
             </Form>
             <div className="mt-2">

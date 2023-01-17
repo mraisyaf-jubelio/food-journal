@@ -225,6 +225,9 @@ td {
   .bg {
     height: 98vh;
   }
+  .register {
+    box-shadow: none;
+  }
   .box {
     height: auto;
     justify-content: center;
@@ -239,12 +242,7 @@ td {
   .reg-head {
     background-image: none;
   }
-  .register {
-    background: rgba(255, 255, 255, 0.75);
-    padding: 1.2rem;
-    border-radius: 20px;
-    box-shadow: 2px 1px 3px rgba(0, 0, 0, 0.25), -0.5px 1px 3px rgba(0, 0, 0, 0.25);
-  }
+
   .gambar {
     display: none;
   }

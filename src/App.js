@@ -29,7 +29,6 @@ function App() {
           <Route index element={<Dashboard />} />
           <Route exact path={"detail/:id"} element={<DetailFood />} />
           <Route exact path="user" element={<User />} />
-          <Route exact path='add-food' element={<AddFood />} />
           <Route exact path='like-food' element={<UserLikeFood />} />
         </Route>
         <Route exact path='/admin' element={sesi.token && sesi.role === "admin" ? <NavigasiAdmin /> : <Error />}>

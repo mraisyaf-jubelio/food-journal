@@ -1,5 +1,5 @@
 export const options = [
-    { value: "rice", label: "nasi" },
+    { value: "rice", label: "rice" },
     { value: "onion", label: "onion" },
     { value: "chili", label: "chili" },
     { value: "beef", label: "beef" },

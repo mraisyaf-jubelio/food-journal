@@ -22,11 +22,8 @@ const NavigasiBar = () => {
               <NavLink to="/dashboard" className="nav-link">
                 Home
               </NavLink>
-              <NavLink to="add-food" className="nav-link">
-                Add Food
-              </NavLink>
               <NavLink to="like-food" className="nav-link">
-                Like Food
+                Favorite Foods
               </NavLink>
               <NavDropdown title={sesi.name} id="basic-nav-dropdown">
                 <NavDropdown.Item as={Link} to="user">

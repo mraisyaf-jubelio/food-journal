@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../component.css";
+import "./admin.css";
 import { Container, Row, Col, Button, Modal, Form } from "react-bootstrap";
 import { getRating, hapus } from "../api";
 import { options } from "../datas";
@@ -10,9 +11,11 @@ import { detailFood } from "../api";
 import { Link, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 import RatingView from "../rating";
 import axios from "axios";
 import { sesi } from "../api";
+import Rate from "../createRating";
 
 function DetFoodAdmin() {
   const [detFood, setDetFood] = useState([]);
@@ -21,6 +24,11 @@ function DetFoodAdmin() {
   let { id } = useParams();
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const [tampil, setTampil] = useState(false);
+  const rate = () => setTampil(true);
+  const close = () => setTampil(false);
+
   const inggredients = detFood.ingredients === undefined ? [] : detFood.ingredients;
   const ingreDef = inggredients.map((e) => {
     return {
@@ -92,15 +100,12 @@ function DetFoodAdmin() {
     <section className="font detail p-4">
       <Container fluid>
         <Row className="justify-content-center">
-          <Col md={5} sm={6} xs={6} className="detail-img p-4 d-flex align-items-center justify-content-center rounded-start">
-            <div className="text-center img-detail position-relative">
-              <Button variant="dark" className="tombol-back">
-                <Link to="/admin">Back</Link>
-              </Button>
+          <Col xl={4} md={6} sm={8} className="detail-img p-4 d-flex align-items-center justify-content-center rounded-start">
+            <div className="text-center">
               <img src={detFood.imageUrl} className="img-fluid rounded-4 rotate-6" alt={detFood.name} />
             </div>
           </Col>
-          <Col md={5} sm={6} xs={6} className="p-4 rounded-end bg-white">
+          <Col xl={4} md={6} xs={11} className="p-4 rounded-end bg-white">
             <div>
               <h2 className="fw-bold fs-1">{detFood.name}</h2>
               <div className="d-flex align-items-center gap-1">
@@ -110,7 +115,7 @@ function DetFoodAdmin() {
                 </p>
                 <p>|</p>
                 <p>
-                  <RatingView rate={parseInt(detFood.rating)} size={20} />
+                  <FontAwesomeIcon icon={faStar} className="text-warning" />
                 </p>
                 <p>{detFood.rating}</p>
               </div>
@@ -124,13 +129,15 @@ function DetFoodAdmin() {
                   })}
                 </ul>
               </div>
-
-              <div className="d-flex ">
+              <div className="d-flex mt-2 justify-content-around">
                 <Button variant="outline-light" className="back-color" onClick={() => hndleHps(detFood.id)}>
                   Delete
                 </Button>
                 <Button variant="outline-light" className="back-color" onClick={handleShow}>
                   Edit
+                </Button>
+                <Button variant="outline-light" className="back-color" onClick={rate}>
+                  Rate
                 </Button>
               </div>
             </div>
@@ -204,6 +211,15 @@ function DetFoodAdmin() {
               </Button>
             </div>
           </Form>
+        </Modal.Body>
+      </Modal>
+
+      <Modal show={tampil} onHide={close}>
+        <Modal.Header closeButton>
+          <Modal.Title>Rate Food</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Rate idFood={id} />
         </Modal.Body>
       </Modal>
     </section>

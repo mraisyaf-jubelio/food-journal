@@ -90,9 +90,10 @@ export const getRating = async (idFood) => {
 }
 
 export const createRate = async (idFood, review, star) => {
+    const x = parseInt(star)
     const rating = await axios.post(`${process.env.REACT_APP_BASEURL}/api/v1/rate-food/${idFood}`,
         {
-            rating: star,
+            rating: x,
             review: review
         },
         {

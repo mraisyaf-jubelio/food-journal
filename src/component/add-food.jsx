@@ -10,6 +10,7 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBowlFood } from "@fortawesome/free-solid-svg-icons";
 import image from "./assets/img/add-image.png";
+import { sesi } from "./api";
 
 const AddFood = () => {
   const schema = yup.object({
@@ -20,13 +21,7 @@ const AddFood = () => {
         return value && value[0].size <= 1000000;
       })
       .test("type", "not a picture", (value) => {
-        return (
-          value &&
-          (value[0].type === "image/jpeg" ||
-            value[0].type === "image/webp" ||
-            value[0].type === "image/png" ||
-            value[0].type === "application/jpg")
-        );
+        return value && (value[0].type === "image/jpeg" || value[0].type === "image/png" || value[0].type === "application/jpg");
       }),
   });
 
@@ -60,13 +55,17 @@ const AddFood = () => {
               headers: {
                 apiKey: process.env.REACT_APP_APIKEY,
                 "Conten-Type": "application/json",
-                Authorization: "Bearer " + process.env.REACT_APP_JWTOKEN,
+                Authorization: `Beare ${sesi.token}`,
               },
             }
           )
           .then((respon) => {
             alert(respon.data.message);
             window.location.assign("/admin");
+          })
+          .catch((eror) => {
+            console.log(eror);
+            alert(eror.response.data.message);
           });
       })
       .catch((err) => console.log(err));

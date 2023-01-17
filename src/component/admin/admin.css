@@ -1,12 +1,12 @@
 .pag {
   height: 60px;
 }
-.pagination a{
+.pagination a {
   text-decoration: none;
   color: black;
-  margin-top: 15px
+  margin-top: 15px;
 }
-.break{
+.break {
   margin-top: 15px;
 }
 .paginationBtn a:hover {
@@ -16,4 +16,3 @@
 .paginationActive a {
   background-color: #eaeaea;
 }
-

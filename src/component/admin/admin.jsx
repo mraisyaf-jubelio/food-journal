@@ -143,13 +143,13 @@ const Admin = () => {
                       <h4 className="fw-bold">{e.name}</h4>
                     </Card.Title>
                     <Card.Text>{e.description}</Card.Text>
-                    <div className="d-flex justify-content-center mt-2 mb-2">
+                    <div className="d-flex justify-content-center ">
                       <div className="like" onClick={() => liked(e.id, e.isLike)}>
                         <FontAwesomeIcon icon={faHeart} className={e.isLike === true ? "text-danger" : "text-light"} />
                         <span className="ms-2 ">{e.totalLikes}</span>
                       </div>
-                      <div className="rate p-1">
-                        <RatingView rate={e.rating} size={23} />
+                      <div className="rate">
+                        <RatingView rate={e.rating} size={24} />
                       </div>
                     </div>
                     <Link to={`detailFoodAdmin/${e.id}`}>

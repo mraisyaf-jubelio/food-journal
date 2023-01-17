@@ -69,45 +69,7 @@ const Dashboard = () => {
               </div>
             </Col>
           </Row>
-          <Row className="justify-content-center gap-5 p-3">
-            <h2 className="mt-3 judul text-center fw-bold color">Category Foods</h2>
-            <Col md={4} sm={5} xs={10} className="p-lg-3 ">
-              <div className="colom">
-                <img src={health} alt="makanan sehat cuy" className="img-fluid images-spec" />
-                <div className="isi">
-                  <h2 className="color">Healthy Food</h2>
-                  <p>
-                    Healthy Food is food that has a balanced nutritional content, contains fiber and substances the body needs
-                    for the process of growth and development.
-                  </p>
-                </div>
-              </div>
-            </Col>
-            <Col md={4} sm={5} xs={10} className="p-lg-3">
-              <div className="colom">
-                <img src={veg} alt="vegetarian" className="img-fluid images-spec" />
-                <div className="isi">
-                  <h2 className="color">Vegetarian Food</h2>
-                  <p>
-                    Vegetarian cuisine is food that meets vegetarian standards by excluding meat and products of animal origin.
-                  </p>
-                </div>
-              </div>
-            </Col>
-            <Col md={4} sm={5} xs={10} className="p-lg-3">
-              <div className="colom">
-                <img src={cpt} alt="" className="img-fluid images-spec" />
-                <div className="isi">
-                  <h2 className="color">Fast Food</h2>
-                  <p>
-                    Fast food is food served and served quickly. In other words, ready-to-eat food is food that is prepared
-                    immediately
-                  </p>
-                </div>
-              </div>
-            </Col>
-          </Row>
-          <hr />
+
           <h3 className="fw-bold text-center fs-2 fw-bold mt-4 color" id="food">
             List Food
           </h3>
@@ -124,12 +86,12 @@ const Dashboard = () => {
                         <h4 className="fw-bold">{e.name}</h4>
                       </Card.Title>
                       <Card.Text>{e.description}</Card.Text>
-                      <div className="d-flex justify-content-center mt-2 mb-2">
+                      <div className="d-flex justify-content-center">
                         <div className="like" onClick={() => liked(e.id, e.isLike)}>
                           <FontAwesomeIcon icon={faHeart} className={e.isLike === true ? "text-danger" : "text-white"} />
-                          <span className="ms-2 ">{e.totalLikes}</span>
+                          <span className="ms-2">{e.totalLikes}</span>
                         </div>
-                        <div className="rate p-1">
+                        <div className="rate">
                           <RatingView rate={e.rating} size={23} />
                         </div>
                       </div>
@@ -145,22 +107,21 @@ const Dashboard = () => {
             })}
           </Row>
           <hr />
-          <Container>
-            <Row className="justify-content-center align-items-center mb-4 mt-4 ">
-              <h2 className="text-center color fs-2 fw-bold">About</h2>
-              <Col sm={10} lg={5} md={6} className="digital ord2 ">
-                <h2>Food Journal Digital</h2>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia officiis minima repellat dolore neque in
-                  quisquam fuga nesciunt ut alias vero, quis illo molestiae animi reprehenderit dolorem omnis architecto
-                  laudantium.
-                </p>
-              </Col>
-              <Col md={5} className="">
-                <img src={bg} className="img-fluid" alt="" />
-              </Col>
-            </Row>
-          </Container>
+
+          <Row className="justify-content-center align-items-center mb-4 mt-4 ">
+            <h2 className="text-center color fs-2 fw-bold">About</h2>
+            <Col sm={10} lg={5} md={6} className="digital ord2 ">
+              <h2 className="fw-bold">Food Journal Digital</h2>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia officiis minima repellat dolore neque in
+                quisquam fuga nesciunt ut alias vero, quis illo molestiae animi reprehenderit dolorem omnis architecto
+                laudantium.
+              </p>
+            </Col>
+            <Col md={5} className="vektor2">
+              <img src={bg} className="img-fluid" alt="" />
+            </Col>
+          </Row>
         </Container>
       </section>
     </>

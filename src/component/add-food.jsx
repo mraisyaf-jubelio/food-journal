@@ -55,7 +55,7 @@ const AddFood = () => {
               headers: {
                 apiKey: process.env.REACT_APP_APIKEY,
                 "Conten-Type": "application/json",
-                Authorization: `Beare ${sesi.token}`,
+                Authorization: `Bearer ${sesi.token}`,
               },
             }
           )

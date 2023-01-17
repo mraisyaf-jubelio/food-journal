@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Form, Col, Row, Button, InputGroup } from "react-bootstrap";
+import { Container, Form, Col, Row, Button, InputGroup, Alert } from "react-bootstrap";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Controller, useForm } from "react-hook-form";
 import * as yup from "yup";
@@ -29,6 +29,7 @@ const AddFood = () => {
         );
       }),
   });
+
   const {
     register,
     handleSubmit,
@@ -70,6 +71,7 @@ const AddFood = () => {
       })
       .catch((err) => console.log(err));
   };
+
   return (
     <section className="font">
       <Container>
@@ -78,6 +80,13 @@ const AddFood = () => {
           <Col md={4} sm={9} className="ord-1">
             <div className="kolom-add p-3 border-1">
               <Form onSubmit={handleSubmit(onSubmit)}>
+                {errors.poto?.message ? (
+                  <Alert variant="danger" className="msg">
+                    {errors.poto?.message}
+                  </Alert>
+                ) : (
+                  <></>
+                )}
                 <Form.Group className="mb-3" controlId="formBasicText">
                   <Form.Label>Name Food</Form.Label>
                   <InputGroup>
@@ -95,7 +104,7 @@ const AddFood = () => {
                   <Form.Label>Poto</Form.Label>
                   <Form.Control {...register("poto")} type="file" name="poto" />
                 </Form.Group>
-                <p className="text-danger">{errors.poto?.message}</p>
+
                 <Form.Group>
                   <Controller
                     name="bahan"

@@ -107,7 +107,7 @@ const Dashboard = () => {
               </div>
             </Col>
           </Row>
-
+          <hr />
           <h3 className="fw-bold text-center fs-2 fw-bold mt-4 color" id="food">
             List Food
           </h3>
@@ -144,6 +144,7 @@ const Dashboard = () => {
               );
             })}
           </Row>
+          <hr />
           <Container>
             <Row className="justify-content-center align-items-center mb-4 mt-4 ">
               <h2 className="text-center color fs-2 fw-bold">About</h2>

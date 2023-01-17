@@ -7,7 +7,6 @@ import "./admin.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { getFood } from "../api";
 import { roleData } from "../datas";

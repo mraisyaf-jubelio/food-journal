@@ -4,13 +4,14 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Controller, useForm } from "react-hook-form";
 import * as yup from "yup";
 import Select from "react-select";
-import { options } from "./datas";
-import { uploadImage } from "./api";
+import { options } from "../datas";
+import { uploadImage } from "../api";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBowlFood } from "@fortawesome/free-solid-svg-icons";
-import image from "./assets/img/add-image.png";
-import { sesi } from "./api";
+import image from "../assets/img/add-image.png";
+import { sesi } from "../api";
+import "./admin.css";
 
 const AddFood = () => {
   const schema = yup.object({
@@ -76,7 +77,7 @@ const AddFood = () => {
       <Container>
         <Row className="justify-content-center pt-4 align-items-center">
           <h2 className="text-center">Form Add Food</h2>
-          <Col md={4} sm={9} className="ord-1">
+          <Col md={4} sm={9} xs={10} className="ord-1 mt-3 p-2">
             <div className="kolom-add p-3 border-1">
               <Form onSubmit={handleSubmit(onSubmit)}>
                 {errors.poto?.message ? (
@@ -132,7 +133,7 @@ const AddFood = () => {
               </Form>
             </div>
           </Col>
-          <Col md={4} sm={6}>
+          <Col md={4} sm={6} xs={6}>
             <img src={image} className="img-fluid" alt="ilustrasi" />
           </Col>
         </Row>

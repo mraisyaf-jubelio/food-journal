@@ -5,7 +5,7 @@ import Dashboard from './component/dashboard';
 import DetailFood from './component/detailFood';
 import NavigasiBar from './component/navigasi';
 import User from './component/user';
-import AddFood from './component/add-food';
+import AddFood from './component/admin/add-food';
 import NavigasiAdmin from './component/admin/navigasi-admin';
 import Admin from './component/admin/admin';
 import DetFoodAdmin from './component/admin/detFoodAdmin';

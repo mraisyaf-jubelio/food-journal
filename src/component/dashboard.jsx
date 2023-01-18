@@ -3,9 +3,6 @@ import { Card, Col, Container, Row, Button } from "react-bootstrap";
 import { getFood } from "./api";
 import { useState, useEffect } from "react";
 import page1 from "./assets/img/page1.png";
-import health from "./assets/img/health.jpg";
-import veg from "./assets/img/veg.jpg";
-import cpt from "./assets/img/cpt.jpg";
 import "./component.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -51,11 +48,10 @@ const Dashboard = () => {
           <Row className="align-items-center box">
             <Col md={6} sm={8} xs={11} className="ord-1">
               <div className="p-3">
-                <h1 className="font-capitalize text-head fw-bold">Mangan heula atuh</h1>
-                <p className="text-white">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. In est non quasi esse perspiciatis. Accusantium modi
-                  dolore quasi eum impedit?
-                </p>
+                <h1 className="font-capitalize text-head fw-bold">
+                  <span style={{ color: "#FF00C7" }}>Meat, Eat &</span> enjoy the true tast
+                </h1>
+                <p className="text-white">Food tested better when you eat it with your family and friends.</p>
                 <a href="#food">
                   <div className="btn text-white" style={{ backgroundColor: "#FF00C7" }}>
                     See Foods
@@ -77,7 +73,7 @@ const Dashboard = () => {
             {food.map((e, i) => {
               return (
                 <Col key={i} lg={3} md={6} className="d-flex justify-content-center">
-                  <Card className="card-food d-flex justify-content-center align-items-center bg-page">
+                  <Card className="card-food d-flex justify-content-center align-items-center">
                     <div className="card-food-image">
                       <Card.Img variant="top" src={e.imageUrl} className="img-thumbnail" />
                     </div>
@@ -110,13 +106,13 @@ const Dashboard = () => {
 
           <Row className="justify-content-center align-items-center mb-4 mt-4 ">
             <h2 className="text-center color fs-2 fw-bold">About</h2>
-            <Col sm={10} lg={5} md={6} className="digital ord2 ">
+            <Col sm={6} lg={4} md={6} className="digital ord2 ">
               <h2 className="fw-bold">Food Journal Digital</h2>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia officiis minima repellat dolore neque in
-                quisquam fuga nesciunt ut alias vero, quis illo molestiae animi reprehenderit dolorem omnis architecto
-                laudantium.
+                Through the food that you find it becomes a new experience to start a new dish with you like food and enter your
+                favorite food list
               </p>
+              <div></div>
             </Col>
             <Col md={5} className="vektor2">
               <img src={bg} className="img-fluid" alt="" />

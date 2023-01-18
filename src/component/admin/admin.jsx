@@ -13,7 +13,6 @@ import { roleData } from "../datas";
 import ReactSelect from "react-select";
 import { updateRole } from "../api";
 import RatingView from "../rating";
-import "../component.css";
 import { sesi } from "../api";
 
 const Admin = () => {
@@ -91,7 +90,7 @@ const Admin = () => {
   }, []);
   return (
     <>
-      <Container className="mb-5">
+      <Container className="mb-5 font">
         <h1 className="fw-bolder color text-center">Data User</h1>
         <Row>
           <Col lg={12}>

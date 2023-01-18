@@ -13,7 +13,7 @@ const NavigasiBar = () => {
   };
   return (
     <>
-      <Navbar className="shadow-sm" bg="light" expand="lg" sticky="top">
+      <Navbar className="shadow-sm font" bg="light" expand="lg" sticky="top">
         <Container>
           <Navbar.Brand href="#home">Mangan</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />

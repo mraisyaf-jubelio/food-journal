@@ -36,11 +36,11 @@ const Login = () => {
   return (
     <>
       <Container fluid className="font cont">
-        <Row className="p-3 justify-content-center">
-          <Col md={4} sm={5}>
-            <img src={loginBg} className="img-fluid rounded-start" alt="ilustrasi" />
+        <Row className="justify-content-center mt-3">
+          <Col md={4} sm={6}>
+            <img src={loginBg} className="img-fluid rounded-start radius" alt="ilustrasi" />
           </Col>
-          <Col md={4} sm={5} className="kolom-login p-3 rounded-end">
+          <Col md={4} sm={6} xs={10} className="kolom-login p-3 rounded-end">
             <h3 className="fw-bold judul">Login</h3>
             <p className="text-muted mb-2">Login into your account</p>
             <Form onSubmit={handleSubmit(submit)}>

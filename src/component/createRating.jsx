@@ -14,7 +14,7 @@ function Rate(props) {
     createRate(props.idFood, review, rating).then(() => window.location.reload(false));
   };
   return (
-    <div className="d-flex flex-column align-items-center">
+    <div className="d-flex flex-column align-items-center font">
       <ReactStars
         count={5}
         onChange={ratingChanged}

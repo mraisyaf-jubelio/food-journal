@@ -49,7 +49,7 @@ const Register = () => {
   return (
     <section className="font position-relative">
       <Container>
-        <Row className="p-2 justify-content-center align-items-center">
+        <Row className="p-4 justify-content-center align-items-center">
           <Col md={6} lg={4} sm={10} className="register">
             <h2 className="fw-bold text-center">Sign up</h2>
             <p className="text-center">Sign up into your account</p>

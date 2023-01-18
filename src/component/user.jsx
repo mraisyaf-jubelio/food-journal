@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Col, Container, Row, Modal, Form } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
-import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faPhoneAlt } from "@fortawesome/free-solid-svg-icons";
 import { useForm } from "react-hook-form";
 import { getUser, sesi, uploadImage } from "./api";
@@ -55,30 +55,30 @@ const User = () => {
     getUser().then((respon) => setData(respon));
   }, []);
   return (
-    <Container>
+    <Container className="font">
       <div className="poto">
         <h1 className="text-center pt-lg-5">Profile</h1>
       </div>
       <Row className="head-user justify-content-center">
-        <Col md={5} sm={9} xs={9} className="body-user text-center p-3 p-sm-3">
+        <Col md={5} sm={9} xs={9} className="body-user p-3 p-sm-3 text-center">
           <div className="user-img text-center">
             <img src={data.profilePictureUrl ? data.profilePictureUrl : poto} className="img-fluid" alt="poto User" />
           </div>
           <div className="mt-3">
-            <p className="fs-5">
-              <FontAwesomeIcon icon={faUser} className="me-2" />
+            <p className="fs-5 fw-700">
+              <FontAwesomeIcon icon={faUser} className="me-2 color" />
               {data.name}
             </p>
           </div>
           <div className="mt-3">
-            <p className="fs-5">
-              <FontAwesomeIcon icon={faEnvelope} className="me-2" />
+            <p className="fs-5 fw-700">
+              <FontAwesomeIcon icon={faEnvelope} className="me-2 color" />
               {data.email}
             </p>
           </div>
           <div className="mt-3">
-            <p className="fs-5">
-              <FontAwesomeIcon icon={faPhoneAlt} className="me-2" />
+            <p className="fs-5 fw-700">
+              <FontAwesomeIcon icon={faPhoneAlt} className="me-2 color" />
               {data.phoneNumber}
             </p>
           </div>

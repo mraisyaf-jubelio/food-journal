@@ -4,6 +4,7 @@ import { userLikeFood } from "./api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import RatingView from "./rating";
+import Footer from "./footer";
 
 const UserLikeFood = () => {
   const [foodsLike, setFoodsLike] = useState([]);
@@ -44,6 +45,7 @@ const UserLikeFood = () => {
           })}
         </Row>
       </Container>
+      <Footer />
     </section>
   );
 };

@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import { getUser, sesi, uploadImage } from "./api";
 import poto from "./assets/img/potoDefault.png";
 import axios from "axios";
+import Footer from "./footer";
 
 const User = () => {
   const [show, setShow] = useState(false);
@@ -87,6 +88,8 @@ const User = () => {
           </Button>
         </Col>
       </Row>
+
+      <Footer />
 
       {/* modal */}
       <Modal show={show} onHide={handleClose}>

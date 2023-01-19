@@ -47,14 +47,6 @@ td {
   border-radius: 22px;
   padding: 0.57rem;
 }
-
-.digital {
-  padding: 1.3rem;
-  border-radius: 20px;
-  border: 1px solid rgba(100, 100, 100, 0.25);
-  background: #f1ecec;
-  /* box-shadow: 20px 20px 40px #bcbcbc, -20px -20px 40px #ffffff; */
-}
 .vektor2 {
   animation: 2s linear infinite alternate about;
 }
@@ -125,6 +117,9 @@ td {
 }
 .rate {
   margin-top: -7px;
+}
+.icon-about {
+  width: 3rem;
 }
 /* end Dashboard */
 
@@ -284,4 +279,13 @@ td {
   100% {
     transform: scale(1);
   }
+}
+
+.bd-footer a {
+  color: #212529;
+  text-decoration: none;
+}
+.bd-footer a:hover {
+  text-decoration: underline;
+  color: blue;
 }

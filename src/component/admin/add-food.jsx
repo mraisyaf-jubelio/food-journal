@@ -22,7 +22,7 @@ const AddFood = () => {
         return value && value[0].size <= 1000000;
       })
       .test("type", "not a picture", (value) => {
-        return value && (value[0].type === "image/jpeg" || value[0].type === "image/png" || value[0].type === "application/jpg");
+        return value && (value[0].type === "image/jpeg" || value[0].type === "image/png" || value[0].type === "image/jpg");
       }),
   });
 

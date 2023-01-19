@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "../component.css";
-import "./admin.css";
 import { Container, Row, Col, Button, Modal, Form } from "react-bootstrap";
 import { getRating, hapus } from "../api";
 import { options } from "../datas";
@@ -8,13 +6,14 @@ import { useForm, Controller } from "react-hook-form";
 import Select from "react-select";
 import { uploadImage } from "../api";
 import { detailFood } from "../api";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import RatingView from "../rating";
 import axios from "axios";
 import { sesi } from "../api";
+import Footer from "../footer";
 import Rate from "../createRating";
 
 function DetFoodAdmin() {
@@ -51,9 +50,7 @@ function DetFoodAdmin() {
     if (data.poto) {
       try {
         respon = await uploadImage(imgFood);
-      } catch (eror) {
-        alert(eror.response.data.errors);
-      }
+      } catch (eror) {}
     }
     axios
       .post(
@@ -97,8 +94,8 @@ function DetFoodAdmin() {
   }, []);
 
   return (
-    <section className="font detail p-4">
-      <Container fluid>
+    <section className="font detail">
+      <Container fluid className="p-3">
         <Row className="justify-content-center">
           <Col xl={4} md={6} sm={8} className="detail-img p-4 d-flex align-items-center justify-content-center rounded-start">
             <div className="text-center">
@@ -119,7 +116,7 @@ function DetFoodAdmin() {
                 </p>
                 <p>{detFood.rating}</p>
               </div>
-              <h5 className="fw-semibold">Description : </h5>
+              <h5>Description : </h5>
               <p>{detFood.description}</p>
               <div>
                 <h5>ingredients:</h5>
@@ -147,12 +144,12 @@ function DetFoodAdmin() {
           <h2 className="fw-bolder text-white text-center">Rating</h2>
           {ratingFood.map((e, i) => {
             return (
-              <Col lg={3} md={6} sm={8} key={i} className="text-white p-3 rounded-4" style={{ background: "#333333" }}>
+              <Col lg={3} md={6} sm={7} key={i} className="text-white p-3 rounded-3" style={{ background: "#2e2e2e" }}>
                 <div className="mb-1">
                   <img src={e.user.profilePictureUrl} alt={e.user.name} className="img-fluid img-rating rounded-circle me-2" />
                   <span>{e.user.name}</span>
                 </div>
-                <RatingView rate={e.rating} size={16} />
+                <RatingView rate={e.rating} size={19} />
                 <p className="mt-1">{e.review}</p>
                 <hr />
               </Col>
@@ -160,6 +157,8 @@ function DetFoodAdmin() {
           })}
         </Row>
       </Container>
+
+      <Footer />
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -170,7 +169,6 @@ function DetFoodAdmin() {
             <Form.Group className="mb-3" controlId="formBasicText">
               <Form.Label>Name Food</Form.Label>
               <Form.Control type="text" {...register("name")} defaultValue={detFood.name} />
-              {/* <Form.Text className="text-muted">We'll never share your email with anyone else.</Form.Text> */}
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
               <Form.Label>Description</Form.Label>

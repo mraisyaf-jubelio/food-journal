@@ -14,6 +14,7 @@ import ReactSelect from "react-select";
 import { updateRole } from "../api";
 import RatingView from "../rating";
 import { sesi } from "../api";
+import Footer from "../footer";
 
 const Admin = () => {
   const [pageNumber, setPageNumber] = useState(0);
@@ -163,6 +164,7 @@ const Admin = () => {
           })}
         </Row>
       </Container>
+      <Footer />
     </>
   );
 };

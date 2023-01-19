@@ -12,6 +12,7 @@ import { faBowlFood } from "@fortawesome/free-solid-svg-icons";
 import image from "../assets/img/add-image.png";
 import { sesi } from "../api";
 import "./admin.css";
+import Footer from "../footer";
 
 const AddFood = () => {
   const schema = yup.object({
@@ -22,7 +23,7 @@ const AddFood = () => {
         return value && value[0].size <= 1000000;
       })
       .test("type", "not a picture", (value) => {
-        return value && (value[0].type === "image/jpeg" || value[0].type === "image/png" || value[0].type === "application/jpg");
+        return value && (value[0].type === "image/jpeg" || value[0].type === "image/png" || value[0].type === "image/jpg");
       }),
   });
 
@@ -138,6 +139,7 @@ const AddFood = () => {
           </Col>
         </Row>
       </Container>
+      <Footer />
     </section>
   );
 };

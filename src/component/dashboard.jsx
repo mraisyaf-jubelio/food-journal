@@ -11,6 +11,9 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import RatingView from "./rating";
 import { sesi } from "./api";
+import bintang from "./assets/img/Star.png";
+import suka from "./assets/img/Like.png";
+import Footer from "./footer";
 
 const Dashboard = () => {
   const [food, setFood] = useState([]);
@@ -46,7 +49,7 @@ const Dashboard = () => {
       <section className="font">
         <Container fluid>
           <Row className="align-items-center box">
-            <Col md={6} sm={8} xs={11} className="ord-1">
+            <Col md={6} sm={8} lg={7} className="ord-1">
               <div className="p-3">
                 <h1 className="font-capitalize text-head fw-bold">
                   <span style={{ color: "#FF00C7" }}>Meat, Eat &</span> enjoy the true tast
@@ -102,23 +105,34 @@ const Dashboard = () => {
               );
             })}
           </Row>
-          <hr />
 
           <Row className="justify-content-center align-items-center mb-4 mt-4 ">
             <h2 className="text-center color fs-2 fw-bold">About</h2>
-            <Col sm={6} lg={4} md={6} className="digital ord2 ">
+            <Col sm={8} lg={4} md={6} className="ord2">
               <h2 className="fw-bold">Food Journal Digital</h2>
               <p>
                 Through the food that you find it becomes a new experience to start a new dish with you like food and enter your
                 favorite food list
               </p>
-              <div></div>
+              <div className="d-flex">
+                <div className="icon-about">
+                  <img src={suka} className="img-fluid" alt="icon-love" />
+                </div>
+                <p className="fs-5 mt-1 ms-2 ">Like Food</p>
+              </div>
+              <div className="d-flex">
+                <div className="icon-about">
+                  <img src={bintang} className="img-fluid" alt="icon-love" />
+                </div>
+                <p className="fs-5 mt-1 ms-2 ">Rate Food</p>
+              </div>
             </Col>
             <Col md={5} className="vektor2">
               <img src={bg} className="img-fluid" alt="" />
             </Col>
           </Row>
         </Container>
+        <Footer />
       </section>
     </>
   );

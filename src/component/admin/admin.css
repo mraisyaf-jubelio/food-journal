@@ -20,3 +20,10 @@
 .paginationActive a {
   background-color: #eaeaea;
 }
+
+@media (max-width: 824px) {
+  .rounded-end {
+    border-top-left-radius: 0.35rem;
+    border-bottom-left-radius: 0.35rem;
+  }
+}

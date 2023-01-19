@@ -9,6 +9,7 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import ReactStars from "react-rating-stars-component";
 import Rate from "./createRating";
 import RatingView from "./rating";
+import Footer from "./footer";
 
 function DetailFood() {
   const [detFood, setDetFood] = useState([]);
@@ -25,7 +26,7 @@ function DetailFood() {
   }, []);
 
   return (
-    <section className="font detail p-4">
+    <section className="font detail">
       <Container fluid>
         <Row className="justify-content-center ">
           <Col xl={4} md={6} sm={8} className="detail-img p-4 d-flex align-items-center justify-content-center rounded-start">
@@ -77,6 +78,7 @@ function DetailFood() {
           })}
         </Row>
       </Container>
+      <Footer />
     </section>
   );
 }

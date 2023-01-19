@@ -44,7 +44,7 @@ function DetFoodAdmin() {
     const ingre = data.bahan;
     const validate = ingre === undefined ? [] : ingre;
     validate.map((e) => {
-      bahan.push(e.value);
+      return bahan.push(e.value);
     });
     const imgFood = data.poto[0];
     if (data.poto) {
@@ -91,7 +91,7 @@ function DetFoodAdmin() {
       setDetFood(result);
     });
     getRating(id).then((respon) => setRatingFood(respon));
-  }, []);
+  }, [id]);
 
   return (
     <section className="font detail">

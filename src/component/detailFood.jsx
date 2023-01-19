@@ -23,7 +23,7 @@ function DetailFood() {
     });
 
     getRating(id).then((respon) => setRatingFood(respon));
-  }, []);
+  }, [id]);
 
   return (
     <section className="font detail">

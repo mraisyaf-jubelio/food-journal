@@ -1,13 +1,31 @@
 import React from "react";
-import { Container, Row, Col, FloatingLabel, Form, Button } from "react-bootstrap";
+import { Container, Row, Col, FloatingLabel, Form, Button, Alert } from "react-bootstrap";
 import "./component.css";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { regisImg } from "./api";
 import { Link } from "react-router-dom";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 const Register = () => {
-  const { register, handleSubmit } = useForm();
+  const schema = yup.object({
+    poto: yup
+      .mixed()
+      .required("You need to provide a file")
+      .test("fileSize", "the file is top large, max 1mb", (value) => {
+        return value && value[0].size <= 1000000;
+      })
+      .test("type", "not a picture, only jpg/png/jpeg", (value) => {
+        return value && (value[0].type === "image/jpeg" || value[0].type === "image/png" || value[0].type === "image/jpg");
+      }),
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(schema) });
 
   const onSubmit = (data) => {
     if (data.password !== data.password2) {
@@ -35,14 +53,15 @@ const Register = () => {
           }
         )
         .then((respon) => {
-          console.log(respon);
           window.location.assign("/");
         })
         .catch((err) => {
-          console.log(err.response);
-          alert(err.response.data.message);
-          const showErr = err.response.data;
-          showErr.map((e) => alert(e.message));
+          if (err.response.data.message) {
+            alert(err.response.data.message);
+          } else {
+            const showErr = err.response.data.errors;
+            showErr.map((e) => alert(e.message));
+          }
         });
     });
   };
@@ -54,6 +73,13 @@ const Register = () => {
             <h2 className="fw-bold text-center">Sign up</h2>
             <p className="text-center">Sign up into your account</p>
             <Form onSubmit={handleSubmit(onSubmit)}>
+              {errors.poto?.message ? (
+                <Alert variant="danger" className="msg">
+                  {errors.poto?.message}
+                </Alert>
+              ) : (
+                <></>
+              )}
               <FloatingLabel controlId="floatingText" className="mb-3" label="Nama Lengkap">
                 <Form.Control {...register("name")} autoFocus required placeholder="enter your name" />
               </FloatingLabel>

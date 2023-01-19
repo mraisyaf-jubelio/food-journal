@@ -31,7 +31,10 @@ const UserLikeFood = () => {
           },
         }
       )
-      .then(() => userLikeFood().then((respon) => setFoodsLike(respon)));
+      .then((response) => {
+        alert(response.data.message);
+        userLikeFood().then((respon) => setFoodsLike(respon));
+      });
   };
 
   useEffect(() => {

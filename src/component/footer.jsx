@@ -15,28 +15,31 @@ const Footer = () => {
             <ul className="list-unstyled small text-muted">
               <li className="mb-2">
                 a website that can display food/drinks that can be saved along with recipes and if you like it, just add it to
-                the food you like. <a href="https://github.com/raisyaf20/food-journal">Github</a>.
+                the food you like.{" "}
+                <a href="https://github.com/raisyaf20/food-journal" target="_blank">
+                  Github
+                </a>
               </li>
             </ul>
             <div className="d-flex">
               <div style={{ width: "3rem" }}>
-                <a href="https://www.instagram.com/lib.rei/">
-                  <img src={insta} className="img-fluid" alt="" />
+                <a href="https://www.instagram.com/lib.rei/" target="_blank">
+                  <img src={insta} className="img-fluid" alt="icon instagram" />
                 </a>
               </div>
               <div style={{ width: "3rem" }}>
-                <a href="https://www.linkedin.com/in/muhamad-raisyaf-875486246/">
-                  <img src={link} className="img-fluid" alt="" />
+                <a href="https://www.linkedin.com/in/muhamad-raisyaf-875486246/" target="_blank">
+                  <img src={link} className="img-fluid" alt="icon linkedin" />
                 </a>
               </div>
               <div style={{ width: "3rem" }}>
-                <a href="https://www.facebook.com/">
-                  <img src={fb} className="img-fluid" alt="" />
+                <a href="https://www.facebook.com/" target="_blank">
+                  <img src={fb} className="img-fluid" alt="icon facebook" />
                 </a>
               </div>
               <div style={{ width: "3rem" }}>
-                <a href="https://www.tiktok.com/id-ID/">
-                  <img src={tik} className="img-fluid" alt="" />
+                <a href="https://www.tiktok.com/id-ID/" target="_blank">
+                  <img src={tik} className="img-fluid" alt="icon tiktok" />
                 </a>
               </div>
             </div>

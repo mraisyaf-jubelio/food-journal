@@ -51,9 +51,7 @@ function DetFoodAdmin() {
     if (data.poto) {
       try {
         respon = await uploadImage(imgFood);
-      } catch (eror) {
-        alert(eror.response.data.errors);
-      }
+      } catch (eror) {}
     }
     axios
       .post(
@@ -119,7 +117,7 @@ function DetFoodAdmin() {
                 </p>
                 <p>{detFood.rating}</p>
               </div>
-              <h5 className="fw-semibold">Description : </h5>
+              <h5>Description : </h5>
               <p>{detFood.description}</p>
               <div>
                 <h5>ingredients:</h5>
@@ -147,12 +145,12 @@ function DetFoodAdmin() {
           <h2 className="fw-bolder text-white text-center">Rating</h2>
           {ratingFood.map((e, i) => {
             return (
-              <Col lg={3} md={6} sm={8} key={i} className="text-white p-3 rounded-4" style={{ background: "#333333" }}>
+              <Col lg={3} md={6} sm={7} key={i} className="text-white p-3 rounded-3" style={{ background: "#2e2e2e" }}>
                 <div className="mb-1">
                   <img src={e.user.profilePictureUrl} alt={e.user.name} className="img-fluid img-rating rounded-circle me-2" />
                   <span>{e.user.name}</span>
                 </div>
-                <RatingView rate={e.rating} size={16} />
+                <RatingView rate={e.rating} size={19} />
                 <p className="mt-1">{e.review}</p>
                 <hr />
               </Col>

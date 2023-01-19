@@ -5,7 +5,6 @@ import { Outlet, NavLink } from "react-router-dom";
 import "./component.css";
 import { Link } from "react-router-dom";
 import { sesi } from "./api";
-import Footer from "./footer";
 const NavigasiBar = () => {
   const keluar = () => {
     localStorage.removeItem("myObject");

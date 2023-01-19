@@ -42,8 +42,8 @@ function DetFoodAdmin() {
     let respon = data.defImg;
     const bahan = [];
     const ingre = data.bahan;
-
-    ingre.map((e) => {
+    const validate = ingre === undefined ? [] : ingre;
+    validate.map((e) => {
       bahan.push(e.value);
     });
     const imgFood = data.poto[0];

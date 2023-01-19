@@ -52,7 +52,7 @@ const Register = () => {
             },
           }
         )
-        .then((respon) => {
+        .then(() => {
           window.location.assign("/");
         })
         .catch((err) => {

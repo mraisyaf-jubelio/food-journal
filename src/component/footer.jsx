@@ -12,8 +12,8 @@ const Footer = () => {
         <Row className="justify-content-around">
           <Col lg={3} className="mb-3 ">
             <h2>Mangan</h2>
-            <ul class="list-unstyled small text-muted">
-              <li class="mb-2">
+            <ul className="list-unstyled small text-muted">
+              <li className="mb-2">
                 a website that can display food/drinks that can be saved along with recipes and if you like it, just add it to
                 the food you like. <a href="https://github.com/raisyaf20/food-journal">Github</a>.
               </li>
@@ -43,19 +43,19 @@ const Footer = () => {
           </Col>
           <Col xs={6} lg={2} className="mb-3">
             <h6 className="fw-bolder">OVERVIEW</h6>
-            <ul class="list-unstyled">
-              <li class="mb-2">About us</li>
-              <li class="mb-2">Terms of Use</li>
-              <li class="mb-2">Privacy Police</li>
-              <li class="mb-2">Contact us</li>
+            <ul className="list-unstyled">
+              <li className="mb-2">About us</li>
+              <li className="mb-2">Terms of Use</li>
+              <li className="mb-2">Privacy Police</li>
+              <li className="mb-2">Contact us</li>
             </ul>
           </Col>
           <Col xs={6} lg={2} className=" mb-3">
             <h6 className="fw-bolder">COMUNITY</h6>
-            <ul class="list-unstyled">
-              <li class="mb-2">Comunity Central</li>
-              <li class="mb-2">Support</li>
-              <li class="mb-2">Help</li>
+            <ul className="list-unstyled">
+              <li className="mb-2">Comunity Central</li>
+              <li className="mb-2">Support</li>
+              <li className="mb-2">Help</li>
             </ul>
           </Col>
         </Row>

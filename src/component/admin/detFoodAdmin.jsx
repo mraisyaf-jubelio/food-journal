@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "../component.css";
-import "./admin.css";
 import { Container, Row, Col, Button, Modal, Form } from "react-bootstrap";
 import { getRating, hapus } from "../api";
 import { options } from "../datas";
@@ -8,13 +6,14 @@ import { useForm, Controller } from "react-hook-form";
 import Select from "react-select";
 import { uploadImage } from "../api";
 import { detailFood } from "../api";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import RatingView from "../rating";
 import axios from "axios";
 import { sesi } from "../api";
+import Footer from "../footer";
 import Rate from "../createRating";
 
 function DetFoodAdmin() {
@@ -95,8 +94,8 @@ function DetFoodAdmin() {
   }, []);
 
   return (
-    <section className="font detail p-4">
-      <Container fluid>
+    <section className="font detail">
+      <Container fluid className="p-3">
         <Row className="justify-content-center">
           <Col xl={4} md={6} sm={8} className="detail-img p-4 d-flex align-items-center justify-content-center rounded-start">
             <div className="text-center">
@@ -159,6 +158,8 @@ function DetFoodAdmin() {
         </Row>
       </Container>
 
+      <Footer />
+
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Edit Food</Modal.Title>
@@ -168,7 +169,6 @@ function DetFoodAdmin() {
             <Form.Group className="mb-3" controlId="formBasicText">
               <Form.Label>Name Food</Form.Label>
               <Form.Control type="text" {...register("name")} defaultValue={detFood.name} />
-              {/* <Form.Text className="text-muted">We'll never share your email with anyone else.</Form.Text> */}
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
               <Form.Label>Description</Form.Label>

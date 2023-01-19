@@ -236,6 +236,10 @@ td {
   .register {
     box-shadow: none;
   }
+  .box {
+    height: inherit;
+    height: auto;
+  }
 
   .ord-1 {
     order: 2;

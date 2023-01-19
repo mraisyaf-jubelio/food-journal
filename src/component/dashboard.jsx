@@ -49,7 +49,7 @@ const Dashboard = () => {
       <section className="font">
         <Container fluid>
           <Row className="align-items-center box">
-            <Col md={6} sm={8} xs={11} className="ord-1">
+            <Col md={6} sm={8} lg={7} className="ord-1">
               <div className="p-3">
                 <h1 className="font-capitalize text-head fw-bold">
                   <span style={{ color: "#FF00C7" }}>Meat, Eat &</span> enjoy the true tast
@@ -105,7 +105,6 @@ const Dashboard = () => {
               );
             })}
           </Row>
-          <hr />
 
           <Row className="justify-content-center align-items-center mb-4 mt-4 ">
             <h2 className="text-center color fs-2 fw-bold">About</h2>

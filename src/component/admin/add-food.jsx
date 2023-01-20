@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Form, Col, Row, Button, InputGroup, Alert } from "react-bootstrap";
+import { Container, Form, Col, Row, Button, InputGroup } from "react-bootstrap";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Controller, useForm } from "react-hook-form";
 import * as yup from "yup";
@@ -18,13 +18,20 @@ const AddFood = () => {
   const schema = yup.object({
     poto: yup
       .mixed()
-      .required("You need to provide a file")
+      .test("required", "You need to provide a file", (value) => {
+        if (value[0]) return true;
+        return false;
+      })
       .test("fileSize", "the file is top large", (value) => {
-        return value && value[0].size <= 1000000;
+        const el = value[0] === undefined ? [] : value[0];
+        return value && el.size <= 1000000;
       })
       .test("type", "not a picture", (value) => {
-        return value && (value[0].type === "image/jpeg" || value[0].type === "image/png" || value[0].type === "image/jpg");
+        const el = value[0] === undefined ? [] : value[0];
+        return value && (el.type === "image/jpeg" || el.type === "image/png" || el.type === "image/jpg");
       }),
+    nameFood: yup.string().required("name food is required"),
+    desc: yup.string().required("Description is required"),
   });
 
   const {
@@ -42,35 +49,33 @@ const AddFood = () => {
     });
     const gmbr = data.poto[0];
 
-    uploadImage(gmbr)
-      .then((response) => {
-        axios
-          .post(
-            `${process.env.REACT_APP_BASEURL}/api/v1/create-food`,
-            {
-              name: data.nameFood,
-              description: data.desc,
-              imageUrl: response,
-              ingredients: bahan,
+    uploadImage(gmbr).then((response) => {
+      axios
+        .post(
+          `${process.env.REACT_APP_BASEURL}/api/v1/create-food`,
+          {
+            name: data.nameFood,
+            description: data.desc,
+            imageUrl: response,
+            ingredients: bahan,
+          },
+          {
+            headers: {
+              apiKey: process.env.REACT_APP_APIKEY,
+              "Conten-Type": "application/json",
+              Authorization: `Bearer ${sesi.token}`,
             },
-            {
-              headers: {
-                apiKey: process.env.REACT_APP_APIKEY,
-                "Conten-Type": "application/json",
-                Authorization: `Bearer ${sesi.token}`,
-              },
-            }
-          )
-          .then((respon) => {
-            alert(respon.data.message);
-            window.location.assign("/admin");
-          })
-          .catch((eror) => {
-            console.log(eror);
-            alert(eror.response.data.message);
-          });
-      })
-      .catch((err) => console.log(err));
+          }
+        )
+        .then((respon) => {
+          alert(respon.data.message);
+          window.location.assign("/admin");
+        })
+        .catch((eror) => {
+          console.log(eror);
+          alert(eror.response.data.message);
+        });
+    });
   };
 
   return (
@@ -81,13 +86,6 @@ const AddFood = () => {
           <Col md={4} sm={9} xs={10} className="ord-1 mt-3 p-2">
             <div className="kolom-add p-3 border-1">
               <Form onSubmit={handleSubmit(onSubmit)}>
-                {errors.poto?.message ? (
-                  <Alert variant="danger" className="msg">
-                    {errors.poto?.message}
-                  </Alert>
-                ) : (
-                  <></>
-                )}
                 <Form.Group className="mb-3" controlId="formBasicText">
                   <Form.Label>Food Name</Form.Label>
                   <InputGroup>
@@ -96,14 +94,17 @@ const AddFood = () => {
                     </div>
                     <Form.Control type="text" {...register("nameFood")} placeholder="Name Food" />
                   </InputGroup>
+                  <p className="text-danger mt-1">{errors.nameFood?.message}</p>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                   <Form.Label>Description</Form.Label>
                   <Form.Control as="textarea" {...register("desc")} rows={3} />
+                  <p className="text-danger mt-1">{errors.desc?.message}</p>
                 </Form.Group>
                 <Form.Group controlId="formFile" className="mb-4">
                   <Form.Label>Food Photo</Form.Label>
                   <Form.Control {...register("poto")} type="file" name="poto" />
+                  <p className="text-danger mt-1">{errors.poto?.message}</p>
                 </Form.Group>
 
                 <Form.Group>

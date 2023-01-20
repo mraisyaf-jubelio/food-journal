@@ -198,7 +198,6 @@ function DetFoodAdmin() {
                   />
                 )}
               />
-              <Form.Text className="mt-2">please reselect ingredients too edit food</Form.Text>
             </Form.Group>
             <div className="d-flex justify-content-around mt-2">
               <Button variant="outline-light" className="back-color" type="submit">

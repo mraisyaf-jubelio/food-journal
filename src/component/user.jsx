@@ -25,9 +25,7 @@ const User = () => {
     if (data.poto) {
       try {
         respon = await uploadImage(imgUser);
-      } catch (error) {
-        console.log(error.response.data);
-      }
+      } catch (error) {}
     }
     axios
       .post(

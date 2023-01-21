@@ -35,7 +35,7 @@ const Register = () => {
   } = useForm({ resolver: yupResolver(schema) });
   const onSubmit = (data) => {
     if (data.password !== data.password2) {
-      throw new Error("Password tidak sama");
+      alert("Password tidak sama");
     }
     const photo = data.poto[0];
     regisImg(photo).then((response) => {
@@ -58,7 +58,8 @@ const Register = () => {
             },
           }
         )
-        .then(() => {
+        .then((respon) => {
+        alert(respon.data.message)
           window.location.assign("/");
         })
         .catch((err) => {

@@ -35,7 +35,7 @@ const Register = () => {
   } = useForm({ resolver: yupResolver(schema) });
   const onSubmit = (data) => {
     if (data.password !== data.password2) {
-      alert("Password tidak sama");
+      alert("Password not match");
     }
     const photo = data.poto[0];
     regisImg(photo).then((response) => {

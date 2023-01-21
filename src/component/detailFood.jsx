@@ -6,6 +6,7 @@ import { detailFood } from "./api";
 import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 import ReactStars from "react-rating-stars-component";
 import Rate from "./createRating";
 import RatingView from "./rating";
@@ -44,8 +45,10 @@ function DetailFood() {
                 </p>
                 <p className="ms-1 me-1">|</p>
                 <p>rating</p>
-                <ReactStars name="rating" value={stars} size={19} isHalf={true} edit={false} classNames="text-warning" />
-                <p>{detFood.rating}</p>
+                <p>
+                  <FontAwesomeIcon icon={faStar} className="text-warning ms-1 me-1" />
+                  {detFood.rating}
+                </p>
               </div>
               <h5 className="fw-semibold">Description : </h5>
               <p>{detFood.description}</p>

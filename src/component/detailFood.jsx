@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-import ReactStars from "react-rating-stars-component";
+
 import Rate from "./createRating";
 import RatingView from "./rating";
 import Footer from "./footer";
@@ -16,7 +16,7 @@ function DetailFood() {
   const [detFood, setDetFood] = useState([]);
   const [ratingFood, setRatingFood] = useState([]);
   let { id } = useParams();
-  const stars = detFood.rating;
+  
   const inggredients = detFood.ingredients ? detFood.ingredients : [];
   useEffect(() => {
     detailFood(id).then((result) => {

@@ -54,6 +54,7 @@ const User = () => {
     getUser().then((respon) => setData(respon));
   }, []);
   return (
+    <>
     <Container className="font">
       <div className="poto">
         <h1 className="text-center pt-lg-5">Profile</h1>
@@ -87,7 +88,7 @@ const User = () => {
         </Col>
       </Row>
 
-      <Footer />
+      
 
       {/* modal */}
       <Modal show={show} onHide={handleClose}>
@@ -126,6 +127,8 @@ const User = () => {
         </Modal.Body>
       </Modal>
     </Container>
+<Footer />
+</>
   );
 };
 

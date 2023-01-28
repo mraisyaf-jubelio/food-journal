@@ -57,7 +57,7 @@ const User = () => {
     <>
     <Container className="font">
       <div className="poto">
-        <h1 className="text-center pt-lg-5">Profile</h1>
+        <h1 className="text-center pt-lg-5 fw-bolder color">Profile</h1>
       </div>
       <Row className="head-user justify-content-center">
         <Col md={5} sm={9} xs={9} className="body-user p-3 p-sm-3 text-center">

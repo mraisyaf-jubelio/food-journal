@@ -59,7 +59,7 @@ const Register = () => {
           }
         )
         .then((respon) => {
-        alert(respon.data.message)
+          alert(respon.data.message);
           window.location.assign("/");
         })
         .catch((err) => {

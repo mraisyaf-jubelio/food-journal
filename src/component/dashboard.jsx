@@ -56,7 +56,7 @@ const Dashboard = () => {
                 </h1>
                 <p className="text-white">Food tested better when you eat it with your family and friends.</p>
                 <a href="#food">
-                  <div className="btn text-white" style={{ backgroundColor: "#FF00C7" }}>
+                  <div className="btn text-white tombol-detail" style={{ backgroundColor: "#FF00C7" }}>
                     See Foods
                   </div>
                 </a>
@@ -95,7 +95,7 @@ const Dashboard = () => {
                         </div>
                       </div>
                       <Link to={`detail/${e.id}`}>
-                        <Button variant="outline-light" className="back-color mt-2">
+                        <Button variant="outline-light" className="back-color mt-2 tombol-detail">
                           Detail
                         </Button>{" "}
                       </Link>

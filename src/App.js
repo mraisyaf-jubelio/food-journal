@@ -11,6 +11,7 @@ import Admin from './component/admin/admin';
 import DetFoodAdmin from './component/admin/detFoodAdmin';
 import Error from './component/erorPage';
 import UserLikeFood from './component/userLikeFood';
+import DatasUser from './component/admin/userAll';
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
           <Route index element={<Admin />} />
           <Route exact path='addFoodAdmin' element={<AddFood />} />
           <Route exact path='detailFoodAdmin/:id' element={<DetFoodAdmin />} />
+          <Route exact path='all-user' element={<DatasUser />} />
           <Route exact path='profile' element={<User />} />
         </Route>
         <Route exact path="/register" element={<Register />} />

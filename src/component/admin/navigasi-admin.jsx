@@ -26,6 +26,9 @@ const NavigasiAdmin = () => {
               <NavLink to="addFoodAdmin" className="nav-link">
                 Add Food
               </NavLink>
+              <NavLink to="all-user" className="nav-link">
+                All User
+              </NavLink>
               <NavDropdown title={sesi.name} id="basic-nav-dropdown">
                 <NavDropdown.Item as={Link} to="profile">
                   Profile

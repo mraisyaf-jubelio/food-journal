@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-
+import imgDefault from "./assets/img/potoDefault.png"
 import Rate from "./createRating";
 import RatingView from "./rating";
 import Footer from "./footer";
@@ -16,7 +16,7 @@ function DetailFood() {
   const [detFood, setDetFood] = useState([]);
   const [ratingFood, setRatingFood] = useState([]);
   let { id } = useParams();
-  
+
   const inggredients = detFood.ingredients ? detFood.ingredients : [];
   useEffect(() => {
     detailFood(id).then((result) => {
@@ -27,7 +27,7 @@ function DetailFood() {
   }, [id]);
 
   return (
-    <section className="font detail">
+    <section className="font bg-light">
       <Container fluid>
         <Row className="justify-content-center ">
           <Col xl={4} md={6} sm={8} className="detail-img p-4 d-flex align-items-center justify-content-center rounded-start">
@@ -65,12 +65,12 @@ function DetailFood() {
           </Col>
         </Row>
         <Row className="p-2 justify-content-center gap-3">
-          <h2 className="fw-bolder text-white text-center">Rating</h2>
+          <h2 className="fw-bolder text-center">Rating</h2>
           {ratingFood.map((e, i) => {
             return (
-              <Col lg={3} md={6} sm={8} key={i} className="text-white p-3 rounded-4" style={{ background: "#333333" }}>
+              <Col lg={3} md={6} sm={8} key={i} className="p-3 rounded-4 kolom-review bg-white">
                 <div className="mb-1">
-                  <img src={e.user.profilePictureUrl} alt={e.user.name} className="img-fluid img-rating rounded-circle me-2" />
+                  <img src={e.user.profilePictureUrl ? e.user.profilePictureUrl : imgDefault} alt={e.user.name} className="img-fluid img-rating rounded-circle me-2" />
                   <span>{e.user.name}</span>
                 </div>
                 <RatingView rate={e.rating} size={16} />

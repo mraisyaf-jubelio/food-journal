@@ -79,7 +79,7 @@ function DetFoodAdmin() {
   };
 
   const hndleHps = (id) => {
-    if (window.confirm("Are you sure delete food?")) {
+    if (window.confirm(`are you sure delete ${detFood.name}`)) {
       hapus(id).then(() => {
         window.location.assign("/admin");
       });
@@ -94,7 +94,7 @@ function DetFoodAdmin() {
   }, [id]);
 
   return (
-    <section className="font detail">
+    <section className="font bg-light">
       <Container fluid className="p-3">
         <Row className="justify-content-center">
           <Col xl={4} md={6} sm={8} className="detail-img p-4 d-flex align-items-center justify-content-center rounded-start">
@@ -127,7 +127,7 @@ function DetFoodAdmin() {
                 </ul>
               </div>
               <div className="d-flex mt-2 justify-content-around">
-                <Button variant="outline-light" className="back-color" onClick={() => hndleHps(detFood.id)}>
+                <Button variant="outline-light" className="btn-danger" onClick={() => hndleHps(detFood.id)}>
                   Delete
                 </Button>
                 <Button variant="outline-light" className="back-color" onClick={handleShow}>
@@ -141,10 +141,10 @@ function DetFoodAdmin() {
           </Col>
         </Row>
         <Row className="p-2 justify-content-center gap-3">
-          <h2 className="fw-bolder text-white text-center">Rating</h2>
+          <h2 className="fw-bolder text-center">Rating</h2>
           {ratingFood.map((e, i) => {
             return (
-              <Col lg={3} md={6} sm={7} key={i} className="text-white p-3 rounded-3" style={{ background: "#2e2e2e" }}>
+              <Col lg={3} md={6} sm={7} key={i} className="p-3 rounded-3 kolom-review">
                 <div className="mb-1">
                   <img src={e.user.profilePictureUrl} alt={e.user.name} className="img-fluid img-rating rounded-circle me-2" />
                   <span>{e.user.name}</span>
@@ -184,19 +184,23 @@ function DetFoodAdmin() {
               <Controller
                 name="bahan"
                 control={control}
-                render={({ field: { value, onChange } }) => (
-                  <Select
-                    isMulti
-                    options={options}
-                    defaultValue={ingreDef}
-                    className="basic-multi-select"
-                    classNamePrefix="select"
-                    value={value}
-                    onChange={(e) => {
-                      onChange(e);
-                    }}
-                  />
-                )}
+                render={({ field: { value, onChange } }) => {
+                  if (!value) {
+                    onChange(ingreDef);
+                  }
+                  return (
+                    <Select
+                      isMulti
+                      options={options}
+                      className="basic-multi-select"
+                      classNamePrefix="select"
+                      value={value}
+                      onChange={(e) => {
+                        onChange(e);
+                      }}
+                    />
+                  );
+                }}
               />
             </Form.Group>
             <div className="d-flex justify-content-around mt-2">
